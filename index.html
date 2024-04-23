@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-x8SLi+WLNsIhJbZxpShkTvq+Pv19V5OPvC/zBWm/%+bkiQu8NxnwUMBvMeLt6/pwvEuhgLOxtkvSd6JOaXt3yg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">Personal Finance Tracker</a>
+
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="calculator.html">Calculator</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="signup.html">SignUp</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <h2 id="dynamicText">Empower Your Wallet: Track Every Penny, Shape Your Future!</h2>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <section class="my-section">
+        <div class="features-container">
+            <h2>Our Features</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>Easy to Use</h3>
+                    <p>Effortlessly track your income and expenses.</p>
+                </div>
+                <div class="feature">
+                    <h3>Expense Calculator</h3>
+                    <p>Estimate your spending and create budgets.</p>
+                </div>
+                <div class="feature">
+                    <h3>Visualize Spending</h3>
+                    <p>Gain insights with interactive pie charts.</p>
+                </div>
+                <div class="feature">
+                    <h3>Manage Finances</h3>
+                    <p>Set goals and track progress towards financial freedom.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact">
+        <div class="social-links">
+            
+            <a href="https://github.com/Muskansharma-3" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/muskan-sh/" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </section>
+</body>
+<script>
+    window.onload = function() {
+    var dynamicText = document.getElementById('dynamicText');
+    var text = dynamicText.innerText;
+    var words = text.split(' ');
+    dynamicText.innerText = '';
+    var currentIndex = 0;
+
+    function displayLetter() {
+        if (currentIndex < text.length) {
+            if (text[currentIndex] === ' ') {
+                dynamicText.innerText += '\xa0'; // non-breaking space
+            } else {
+                dynamicText.innerText += text[currentIndex];
+            }
+            currentIndex++;
+            setTimeout(displayLetter, 50); // Adjust the delay between letters as needed (in milliseconds)
+        } else {
+            setTimeout(hideText, 200); // Adjust the delay before hiding the text
+        }
+    }
+
+    function hideText() {
+        var hideInterval = setInterval(function() {
+            if (dynamicText.innerText.length > 0) {
+                dynamicText.innerText = dynamicText.innerText.slice(0, -1);
+            } else {
+                clearInterval(hideInterval);
+                currentIndex = 0;
+                setTimeout(displayLetter, 200); // Adjust the delay before displaying the text again
+            }
+        }, 30); // Adjust the speed of disappearing as needed (in milliseconds)
+    }
+
+    displayLetter();
+};
+
+
+
+
+</script>
+
+</html>
